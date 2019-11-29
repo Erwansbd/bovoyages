@@ -1,6 +1,7 @@
 package fr.gtm.bovoyages.rest;
 
 import fr.gtm.bovoyages.dtos.DestinationDTO;
+import fr.gtm.bovoyages.entities.Caddy;
 import fr.gtm.bovoyages.entities.Client;
 import fr.gtm.bovoyages.entities.DatesVoyage;
 import fr.gtm.bovoyages.entities.Destination;
@@ -33,6 +34,8 @@ public class BovoyagesRestController {
 	DatesVoyageRepository datesVoyagesRepository;
 	@Autowired
 	ClientRepository clientRepository;
+	@Autowired 
+	Caddy caddy;
 
 	// Digest digest;
 
@@ -105,7 +108,10 @@ public class BovoyagesRestController {
 			datesVoyagesRepository.save(dv);
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 //			voyageRepository.updateDatesVoyageByVoyageId(voyage.getId());
-			// voyageRepository.save(voyage);
+		
+			List<Voyage> panier = caddy.getVoyages();
+			panier.add(voyage);
+			caddy.setVoyages(panier);
 			return "Votre voyage " + voyage.getRegion() + "avec comme description " + voyage.getDescriptif()
 					+ " a bien été crée.";
 		} else {

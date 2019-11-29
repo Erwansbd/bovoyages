@@ -90,4 +90,51 @@ public class DatesVoyage implements Serializable {
     public void setPromotion(boolean promotion) {
         this.promotion = promotion;
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateAller == null) ? 0 : dateAller.hashCode());
+		result = prime * result + ((dateRetour == null) ? 0 : dateRetour.hashCode());
+		result = prime * result + (deleted ? 1231 : 1237);
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + nbrePlaces;
+		result = prime * result + Float.floatToIntBits(prixHT);
+		result = prime * result + (promotion ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DatesVoyage other = (DatesVoyage) obj;
+		if (dateAller == null) {
+			if (other.dateAller != null)
+				return false;
+		} else if (!dateAller.equals(other.dateAller))
+			return false;
+		if (dateRetour == null) {
+			if (other.dateRetour != null)
+				return false;
+		} else if (!dateRetour.equals(other.dateRetour))
+			return false;
+		if (deleted != other.deleted)
+			return false;
+		if (id != other.id)
+			return false;
+		if (nbrePlaces != other.nbrePlaces)
+			return false;
+		if (Float.floatToIntBits(prixHT) != Float.floatToIntBits(other.prixHT))
+			return false;
+		if (promotion != other.promotion)
+			return false;
+		return true;
+	}
+    
 }

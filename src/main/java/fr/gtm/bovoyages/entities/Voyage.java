@@ -42,6 +42,20 @@ public class Voyage implements Serializable {
 
 
 
+
+
+
+	public Voyage(long id, String region, String descriptif, DatesVoyage datesVoyage, Client client) {
+		super();
+		this.id = id;
+		this.region = region;
+		this.descriptif = descriptif;
+		this.datesVoyage = datesVoyage;
+		this.client = client;
+	}
+
+
+
 	public long getId() {
         return id;
     }
@@ -89,4 +103,62 @@ public class Voyage implements Serializable {
     public void setVoyageurs(List<Voyageur> voyageurs) {
         this.voyageurs = voyageurs;
     }
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
+		result = prime * result + ((datesVoyage == null) ? 0 : datesVoyage.hashCode());
+		result = prime * result + ((descriptif == null) ? 0 : descriptif.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((region == null) ? 0 : region.hashCode());
+		result = prime * result + ((voyageurs == null) ? 0 : voyageurs.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voyage other = (Voyage) obj;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
+			return false;
+		if (datesVoyage == null) {
+			if (other.datesVoyage != null)
+				return false;
+		} else if (!datesVoyage.equals(other.datesVoyage))
+			return false;
+		if (descriptif == null) {
+			if (other.descriptif != null)
+				return false;
+		} else if (!descriptif.equals(other.descriptif))
+			return false;
+		if (id != other.id)
+			return false;
+		if (region == null) {
+			if (other.region != null)
+				return false;
+		} else if (!region.equals(other.region))
+			return false;
+		if (voyageurs == null) {
+			if (other.voyageurs != null)
+				return false;
+		} else if (!voyageurs.equals(other.voyageurs))
+			return false;
+		return true;
+	}
+    
+    
 }
