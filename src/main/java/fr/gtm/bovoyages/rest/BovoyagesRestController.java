@@ -50,9 +50,9 @@ public class BovoyagesRestController {
 //    }
     
     @PostMapping("/destination/new")
-    public String createDestination(@RequestBody DestinationDTO destinationDTO) {
-        destinationRepository.save(destinationDTO.toDestination());
-        return "Votre destination " +destinationDTO.getRegion()+ " avec comme description : " +destinationDTO.getDescription()+ " a bien été sauvegardé dans la base de données.";
+    public String createDestination(@RequestBody Destination destination) {
+        destinationRepository.save(destination);
+        return "Votre destination " +destination.getRegion()+ " avec comme description : " +destination.getDescription()+ " a bien été sauvegardé dans la base de données.";
     }
     
     @GetMapping("/destination/valid")
