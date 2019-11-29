@@ -9,7 +9,7 @@ public class DestinationDTO implements Serializable {
     private long id;
     private String region;
     private String description;
-    private boolean raye;
+    private boolean deleted;
 
     public DestinationDTO() {
     }
@@ -18,15 +18,18 @@ public class DestinationDTO implements Serializable {
         this.id = destination.getId();
         this.region = destination.getRegion();
         this.description = destination.getDescription();
-        this.raye = destination.isRaye();
+        this.deleted = destination.isRaye();
     }
 
-    public Destination toDestination() {
-        Destination destination = new Destination(region,description,raye);
+    public Destination toDestination(DestinationDTO destinationdto) {
+    	String region = destinationdto.getRegion();
+    	String description = destinationdto.getDescription();
+    	boolean deleted = destinationdto.isDeleted();
+        Destination destination = new Destination(region,description,deleted);
         destination.setId(id);
         return destination;
     }
-
+    
     public long getId() {
         return id;
     }
@@ -51,12 +54,14 @@ public class DestinationDTO implements Serializable {
         this.description = description;
     }
 
-    public boolean isRaye() {
-        return raye;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public void setRaye(boolean raye) {
-        this.raye = raye;
-    }
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+
 
 }
