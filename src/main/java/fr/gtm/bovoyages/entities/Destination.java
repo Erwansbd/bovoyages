@@ -24,6 +24,8 @@ public class Destination implements Serializable {
 
     public Destination(String region, String description, boolean raye) {
     }
+    
+    public Destination() {}
 
     public Destination() {
     }
@@ -68,28 +70,48 @@ public class Destination implements Serializable {
         this.datesVoyages = datesVoyages;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Destination)) return false;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((datesVoyages == null) ? 0 : datesVoyages.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (raye ? 1231 : 1237);
+		result = prime * result + ((region == null) ? 0 : region.hashCode());
+		return result;
+	}
 
-        Destination that = (Destination) o;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Destination other = (Destination) obj;
+		if (datesVoyages == null) {
+			if (other.datesVoyages != null)
+				return false;
+		} else if (!datesVoyages.equals(other.datesVoyages))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (raye != other.raye)
+			return false;
+		if (region == null) {
+			if (other.region != null)
+				return false;
+		} else if (!region.equals(other.region))
+			return false;
+		return true;
+	}
 
-        if (getId() != that.getId()) return false;
-        if (isRaye() != that.isRaye()) return false;
-        if (getRegion() != null ? !getRegion().equals(that.getRegion()) : that.getRegion() != null) return false;
-        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
-            return false;
-        return getDatesVoyages() != null ? getDatesVoyages().equals(that.getDatesVoyages()) : that.getDatesVoyages() == null;
-    }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (getId() ^ (getId() >>> 32));
-        result = 31 * result + (getRegion() != null ? getRegion().hashCode() : 0);
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (isRaye() ? 1 : 0);
-        result = 31 * result + (getDatesVoyages() != null ? getDatesVoyages().hashCode() : 0);
-        return result;
-    }
 }
