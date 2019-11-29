@@ -34,8 +34,8 @@ public class BovoyagesRestController {
 	DatesVoyageRepository datesVoyagesRepository;
 	@Autowired
 	ClientRepository clientRepository;
-	@Autowired 
-	Caddy caddy;
+//	@Autowired 
+//	Caddy caddy;
 
 	// Digest digest;
 
@@ -55,6 +55,12 @@ public class BovoyagesRestController {
 	public Destination getDestinationById(@PathVariable("id") long id) {
 		Destination destination = destinationRepository.findById(id).get();
 		return destination;
+	}
+	
+	@GetMapping("/destination/byRegion")
+	public List<Destination> getDestinationsByRegion(@RequestParam(name="region") String region) {
+		List<Destination> destinations = destinationRepository.findDestinationByRegion(region);
+		return destinations;
 	}
 
 //    @PostMapping("/destination/new")
@@ -109,9 +115,9 @@ public class BovoyagesRestController {
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 //			voyageRepository.updateDatesVoyageByVoyageId(voyage.getId());
 		
-			List<Voyage> panier = caddy.getVoyages();
-			panier.add(voyage);
-			caddy.setVoyages(panier);
+//			List<Voyage> panier = caddy.getVoyages();
+//			panier.add(voyage);
+//			caddy.setVoyages(panier);
 			return "Votre voyage " + voyage.getRegion() + "avec comme description " + voyage.getDescriptif()
 					+ " a bien été crée.";
 		} else {
