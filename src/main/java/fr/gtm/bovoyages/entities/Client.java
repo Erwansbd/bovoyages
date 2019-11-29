@@ -14,6 +14,8 @@ public class Client implements Serializable {
 
     public Client() {
     }
+    
+    
 
     public Client(String nom) {
         this.nom = nom;
