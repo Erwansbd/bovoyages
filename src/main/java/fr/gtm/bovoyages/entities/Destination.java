@@ -33,6 +33,9 @@ public class Destination implements Serializable {
     public Destination() {
     }
 
+    public Destination() {
+    }
+
     public long getId() {
         return id;
     }
