@@ -19,7 +19,8 @@ public class DatesVoyage implements Serializable {
     private float prixHT;
     @Column(name = "nb_places")
     private int nbrePlaces;
-    private boolean raye;
+    @Column(name = "deleted")
+    private boolean deleted;
     private boolean promotion;
 
     public long getId() {
@@ -63,11 +64,11 @@ public class DatesVoyage implements Serializable {
     }
 
     public boolean isRaye() {
-        return raye;
+        return deleted;
     }
 
-    public void setRaye(boolean raye) {
-        this.raye = raye;
+    public void setRaye(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public boolean isPromotion() {
