@@ -19,10 +19,22 @@ public class DatesVoyage implements Serializable {
     private float prixHT;
     @Column(name = "nb_places")
     private int nbrePlaces;
-    private boolean raye;
+    private boolean deleted;
     private boolean promotion;
 
-    public long getId() {
+    public DatesVoyage() {}
+    
+    public DatesVoyage(long id, Date dateAller, Date dateRetour, float prixHT, boolean deleted, boolean promotion) {
+		super();
+		this.id = id;
+		this.dateAller = dateAller;
+		this.dateRetour = dateRetour;
+		this.prixHT = prixHT;
+		this.deleted = deleted;
+		this.promotion = promotion;
+	}
+
+	public long getId() {
         return id;
     }
 
@@ -62,15 +74,16 @@ public class DatesVoyage implements Serializable {
         this.nbrePlaces = nbrePlaces;
     }
 
-    public boolean isRaye() {
-        return raye;
-    }
 
-    public void setRaye(boolean raye) {
-        this.raye = raye;
-    }
+    public boolean isDeleted() {
+		return deleted;
+	}
 
-    public boolean isPromotion() {
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public boolean isPromotion() {
         return promotion;
     }
 
