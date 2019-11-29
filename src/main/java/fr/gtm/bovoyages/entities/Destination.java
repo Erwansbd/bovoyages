@@ -28,6 +28,9 @@ public class Destination implements Serializable {
     public Destination(String region, String description, boolean raye) {
     }
 
+    public Destination() {
+    }
+
     public long getId() {
         return id;
     }
