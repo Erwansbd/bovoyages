@@ -89,7 +89,7 @@ public class BovoyagesRestController {
 	}
 	
 	
-	/*------front ---------------------------------------------------*/
+	/*------front -----------------------------------------------------*/
 
 	@GetMapping("/destination/valid")
 	public List<DestinationDTO> getDestinationNotDeleted() {
