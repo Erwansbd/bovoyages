@@ -6,10 +6,12 @@ import fr.gtm.bovoyages.entities.Client;
 import fr.gtm.bovoyages.entities.DatesVoyage;
 import fr.gtm.bovoyages.entities.Destination;
 import fr.gtm.bovoyages.entities.Voyage;
+import fr.gtm.bovoyages.entities.Voyageur;
 import fr.gtm.bovoyages.repositories.ClientRepository;
 import fr.gtm.bovoyages.repositories.DatesVoyageRepository;
 import fr.gtm.bovoyages.repositories.DestinationRepository;
 import fr.gtm.bovoyages.repositories.VoyageRepository;
+import fr.gtm.bovoyages.repositories.VoyageurRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -39,6 +41,8 @@ public class BovoyagesRestController {
 	DatesVoyageRepository datesVoyagesRepository;
 	@Autowired
 	ClientRepository clientRepository;
+	@Autowired
+	VoyageurRepository voyageurRepository;
 	@Autowired 
 	JavaMailSender javamailsender;
 	
@@ -304,8 +308,6 @@ public class BovoyagesRestController {
 			if (client.getId()==id && !v.isPaye()) voyagesDuClient.add(v);
 		}
 //		Optional<Client> clientMail = clientRepository.findById(id);
-		System.out.println(voyagesDuClient.get(0).getClient().getNom());
-		System.out.println(voyagesDuClient.get(0).getClient().getEmail());
 		double prixTotal=0;
 		for(Voyage v : voyagesDuClient) {
 			prixTotal+= v.getDatesVoyage().getPrixHT()*v.getVoyageurs().size();
@@ -332,6 +334,11 @@ public class BovoyagesRestController {
 		return messageConfirmation;
 	}
 	
-	
+	@PostMapping("/voyage/voyageur")
+	public String updateVoyageur(@RequestBody Voyageur voyageur) {
+		Voyageur voyageurMisAJour = new Voyageur(voyageur.getId(), voyageur.getCivilite(), voyageur.getNom(), voyageur.getPrenom(), voyageur.getDateNaissance());
+		voyageurRepository.save(voyageurMisAJour);
+		return "Voyageur : "+voyageur.getNom()+" "+voyageur.getPrenom() +" mis à jour.";
+	}
 
 }
