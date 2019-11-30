@@ -9,7 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class Caddy implements Serializable {
 	
-	
+private Client client;	
 private Voyage voyage;
 private double prixHT;
 private List<Voyage> voyages = new ArrayList<Voyage>();
@@ -37,6 +37,14 @@ public void setPrixHT(double prixHT) {
 
 
 
+public Client getClient() {
+	return client;
+}
+
+public void setClient(Client client) {
+	this.client = client;
+}
+
 public List<Voyage> getVoyages() {
 	return voyages;
 }
@@ -49,6 +57,7 @@ public void setVoyages(List<Voyage> voyages) {
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
+	result = prime * result + ((client == null) ? 0 : client.hashCode());
 	long temp;
 	temp = Double.doubleToLongBits(prixHT);
 	result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -66,6 +75,11 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Caddy other = (Caddy) obj;
+	if (client == null) {
+		if (other.client != null)
+			return false;
+	} else if (!client.equals(other.client))
+		return false;
 	if (Double.doubleToLongBits(prixHT) != Double.doubleToLongBits(other.prixHT))
 		return false;
 	if (voyage == null) {
@@ -80,8 +94,6 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
-
-
 
 
 }

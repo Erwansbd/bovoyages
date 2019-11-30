@@ -14,6 +14,7 @@ public class Voyage implements Serializable {
     private long id;
     private String region;
     private String descriptif;
+    private boolean paye;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_dates_voyage")
     private DatesVoyage datesVoyage;
@@ -64,7 +65,19 @@ public class Voyage implements Serializable {
         this.id = id;
     }
 
-    public String getRegion() {
+    public boolean isPaye() {
+		return paye;
+	}
+
+
+
+	public void setPaye(boolean paye) {
+		this.paye = paye;
+	}
+
+
+
+	public String getRegion() {
         return region;
     }
 
@@ -114,6 +127,7 @@ public class Voyage implements Serializable {
 		result = prime * result + ((datesVoyage == null) ? 0 : datesVoyage.hashCode());
 		result = prime * result + ((descriptif == null) ? 0 : descriptif.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (paye ? 1231 : 1237);
 		result = prime * result + ((region == null) ? 0 : region.hashCode());
 		result = prime * result + ((voyageurs == null) ? 0 : voyageurs.hashCode());
 		return result;
@@ -147,6 +161,8 @@ public class Voyage implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
+		if (paye != other.paye)
+			return false;
 		if (region == null) {
 			if (other.region != null)
 				return false;
@@ -159,6 +175,13 @@ public class Voyage implements Serializable {
 			return false;
 		return true;
 	}
-    
+
+
+
+	@Override
+	public String toString() {
+		return "Voyage id=" + id + ", region=" + region + ", le=" + datesVoyage + ".";
+	}
+ 
     
 }
