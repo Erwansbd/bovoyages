@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+
 @RestController
 public class BovoyagesRestController {
 
@@ -34,8 +36,9 @@ public class BovoyagesRestController {
 	DatesVoyageRepository datesVoyagesRepository;
 	@Autowired
 	ClientRepository clientRepository;
-//	@Autowired 
-//	Caddy caddy;
+	
+    //@Inject
+	//Caddy caddy;
 
 	// Digest digest;
 
@@ -50,12 +53,17 @@ public class BovoyagesRestController {
 		}
 		return destinationDTOList;
 	}
+	
+	/*------front ---------------------------------------------------*/
 
 	@GetMapping("/destination/{id}")
 	public Destination getDestinationById(@PathVariable("id") long id) {
 		Destination destination = destinationRepository.findById(id).get();
 		return destination;
 	}
+	
+	
+	/*------front ---------------------------------------------------*/
 	
 	@GetMapping("/destination/byRegion")
 	public List<Destination> getDestinationsByRegion(@RequestParam(name="region") String region) {
@@ -68,6 +76,10 @@ public class BovoyagesRestController {
 //        destinationRepository.save(destinationDTO.toDestination(destinationDTO));
 //        return "Votre destination " +destinationDTO.getRegion()+ " avec comme description : " +destinationDTO.getDescription()+ " a bien été sauvegardé dans la base de données.";
 //    }
+	
+	
+	
+	/*------front ?????------------*/
 
 	@PostMapping("/destination/new")
 	public String createDestination(@RequestBody Destination destination) {
@@ -75,6 +87,9 @@ public class BovoyagesRestController {
 		return "Votre destination " + destination.getRegion() + " avec comme description : "
 				+ destination.getDescription() + " a bien été sauvegardé dans la base de données.";
 	}
+	
+	
+	/*------front ---------------------------------------------------*/
 
 	@GetMapping("/destination/valid")
 	public List<DestinationDTO> getDestinationNotDeleted() {
@@ -85,6 +100,8 @@ public class BovoyagesRestController {
 		}
 		return destinationsdto;
 	}
+	
+	/*------front ---------------------------------------------------*/
 
 	@GetMapping("/destination/dates/valid/{id}")
 	public List<DatesVoyage> getValidDatesVoyagesByDestinationId(@PathVariable("id") long id) {
@@ -96,18 +113,20 @@ public class BovoyagesRestController {
 		}
 		return datesVoyages;
 	}
+	
+	/*------front ---------------------------------------------------*/
 
 	@PostMapping("voyage/new")
 	public String createVoyage(@RequestBody Voyage voyage) {
 		if (voyage.getDatesVoyage().getNbrePlaces() > voyage.getVoyageurs().size() && voyage.getVoyageurs().size() >= 1
-				&& voyage.getVoyageurs().size() <= 10) {
+				&& voyage.getVoyageurs().size() <= 10) 
+		{
 			LOG.info(" >>>>>" + voyage.getDatesVoyage().getNbrePlaces());
-			voyage.getDatesVoyage()
-					.setNbrePlaces(voyage.getDatesVoyage().getNbrePlaces() - voyage.getVoyageurs().size());
+			voyage.getDatesVoyage().setNbrePlaces(voyage.getDatesVoyage().getNbrePlaces() - voyage.getVoyageurs().size());
 			LOG.info(">>>>>" + voyage.getVoyageurs().size());
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
+			
 			DatesVoyage dv = voyage.getDatesVoyage();
-			// updateDV(dv);
 			if (dv.getNbrePlaces() == 0) {
 				dv.setDeleted(true);
 			}
@@ -120,9 +139,11 @@ public class BovoyagesRestController {
 //			caddy.setVoyages(panier);
 			return "Votre voyage " + voyage.getRegion() + "avec comme description " + voyage.getDescriptif()
 					+ " a bien été crée.";
-		} else {
+		} 
+		
+		else {
 			return "Voyage non crée. Le nombre de voyageurs doit etre compris entre 1 et 9.";
-		}
+			}
 	}
 
 	@GetMapping("/voyage/{id}")
@@ -149,6 +170,8 @@ public class BovoyagesRestController {
 //		model.addAttribute("client", client);
 //		return "signing";
 //	}
+	
+	/*------front ---------------------------------------------------*/
 
 	@PostMapping("/connexion")
 	public boolean connexionTo(@RequestParam(name = "nom") String nom, @RequestParam(name = "password") String password)
@@ -172,6 +195,8 @@ public class BovoyagesRestController {
 		isAuth = false;
 		return isAuth;
 	}
+	
+	/*------front ---------------------------------------------------*/
 
 	@PostMapping("/signup")
 	public boolean createClient(@RequestParam(name = "nom") String nom, @RequestParam(name = "password") String password)
@@ -187,12 +212,16 @@ public class BovoyagesRestController {
 		return isAuth;
 
 	}
+	
+	/*------front ?????------------*/
 
 	@PostMapping("/signup/{nom}")
 	public void createClient(@RequestParam(name = "nom") String nom, Model model) throws NoSuchAlgorithmException {
 		System.out.println(nom);
 
 	}
+	
+	/*------front ?????------------*/
 
 	@GetMapping("/client/{id}")
 	public Client getUserById(@PathVariable("id") long id) {
