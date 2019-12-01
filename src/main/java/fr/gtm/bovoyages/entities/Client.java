@@ -15,8 +15,11 @@ public class Client implements Serializable {
 
     public Client() {
     }
-    
-    
+
+    public Client(String nom, String email) {
+        this.nom = nom;
+        this.email = email;
+    }
 
     public Client(String nom, String email) {
         this.nom = nom;
