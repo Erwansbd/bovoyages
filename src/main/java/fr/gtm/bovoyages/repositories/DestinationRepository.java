@@ -18,4 +18,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 	@Query("SELECT d FROM Destination d JOIN FETCH d.datesVoyages WHERE d.id=?1 ")
 	Destination getDestinationWithDatesById(long id);
 
+	@Query("SELECT d FROM Destination d WHERE UPPER(d.region) LIKE :region%")
+	List<Destination> findDestinationByRegion(String region);
+
 }

@@ -18,17 +18,17 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	@Query(value = "Update clients c SET c.password=?1, c.digest=?2 WHERE c.id=?3", nativeQuery = true)
 	void updateDigest(String password, String digest, long id);*/
 
-	@Query(value = "SELECT digest from clients WHERE clients = ?1", nativeQuery = true)
-	String getValues(String nom);
+    @Query(value = "SELECT digest from clients WHERE clients = ?1", nativeQuery = true)
+    String getValues(String nom);
 
-	public Optional<Client> findByNom(String nom);
+    Optional<Client> findByNom(String nom);
 
-	@Transactional
-	@Modifying
-	@Query(value = "INSERT INTO clients (nom, digest) VALUES(?1, SHA2(?2,256))", nativeQuery = true)
-	void createNewClient(String nom, String password);
-	
-	 @Query(value ="Select * From clients c WHERE c.nom = ?1 and c.digest =?2", nativeQuery = true)
-	    Optional<Client> findByNomAndHashPassword(String nom, String password);
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO clients (nom, digest) VALUES(?1, SHA2(?2,256))", nativeQuery = true)
+    void createNewClient(String nom, String password);
+
+    @Query(value = "Select * From clients c WHERE c.nom = ?1 and c.digest =?2", nativeQuery = true)
+    Optional<Client> findByNomAndHashPassword(String nom, String password);
 
 }

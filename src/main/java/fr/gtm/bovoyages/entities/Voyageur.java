@@ -28,7 +28,8 @@ public class Voyageur implements Serializable {
         this.prenom = prenom;
     }
 
-    public Voyageur(Civilite civilite, String nom, String prenom, Date dateNaissance) {
+    public Voyageur(long id, Civilite civilite, String nom, String prenom, Date dateNaissance) {
+        this.id = id;
         this.civilite = civilite;
         this.nom = nom;
         this.prenom = prenom;
@@ -36,18 +37,22 @@ public class Voyageur implements Serializable {
     }
 
     public long getId() {
+
         return id;
     }
 
     public void setId(long id) {
+
         this.id = id;
     }
 
     public Civilite getCivilite() {
+
         return civilite;
     }
 
     public void setCivilite(Civilite civilite) {
+
         this.civilite = civilite;
     }
 
@@ -56,22 +61,27 @@ public class Voyageur implements Serializable {
     }
 
     public void setNom(String nom) {
+
         this.nom = nom;
     }
 
     public String getPrenom() {
+
         return prenom;
     }
 
     public void setPrenom(String prenom) {
+
         this.prenom = prenom;
     }
 
     public Date getDateNaissance() {
+
         return dateNaissance;
     }
 
     public void setDateNaissance(Date dateNaissance) {
+
         this.dateNaissance = dateNaissance;
     }
 }

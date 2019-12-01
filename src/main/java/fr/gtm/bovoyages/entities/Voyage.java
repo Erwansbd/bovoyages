@@ -14,6 +14,7 @@ public class Voyage implements Serializable {
     private long id;
     private String region;
     private String descriptif;
+    private boolean paye;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_dates_voyage")
     private DatesVoyage datesVoyage;
@@ -28,8 +29,6 @@ public class Voyage implements Serializable {
     private List<Voyageur> voyageurs = new ArrayList<Voyageur>();
     
     public Voyage() {}
-    
-    
 
     public Voyage(String region, String descriptif, DatesVoyage datesVoyage, Client client, List<Voyageur> voyageurs) {
 		super();
@@ -40,53 +39,112 @@ public class Voyage implements Serializable {
 		this.voyageurs = voyageurs;
 	}
 
+    public Voyage(long id, String region, String descriptif, DatesVoyage datesVoyage, Client client) {
+        this.id = id;
+        this.region = region;
+        this.descriptif = descriptif;
+        this.datesVoyage = datesVoyage;
+        this.client = client;
+    }
 
+    public long getId() {
 
-	public long getId() {
         return id;
     }
 
     public void setId(long id) {
+
         this.id = id;
     }
 
     public String getRegion() {
+
         return region;
     }
 
     public void setRegion(String region) {
+
         this.region = region;
     }
 
     public String getDescriptif() {
+
         return descriptif;
     }
 
     public void setDescriptif(String descriptif) {
+
         this.descriptif = descriptif;
     }
 
+    public boolean isPaye() {
+        return paye;
+    }
+
+    public void setPaye(boolean paye) {
+        this.paye = paye;
+    }
+
     public DatesVoyage getDatesVoyage() {
+
         return datesVoyage;
     }
 
     public void setDatesVoyage(DatesVoyage datesVoyage) {
+
         this.datesVoyage = datesVoyage;
     }
 
     public Client getClient() {
+
         return client;
     }
 
     public void setClient(Client client) {
+
         this.client = client;
     }
 
     public List<Voyageur> getVoyageurs() {
+
         return voyageurs;
     }
 
     public void setVoyageurs(List<Voyageur> voyageurs) {
+
         this.voyageurs = voyageurs;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Voyage)) return false;
+
+        Voyage voyage = (Voyage) o;
+
+        if (getId() != voyage.getId()) return false;
+        if (getRegion() != null ? !getRegion().equals(voyage.getRegion()) : voyage.getRegion() != null) return false;
+        if (getDescriptif() != null ? !getDescriptif().equals(voyage.getDescriptif()) : voyage.getDescriptif() != null)
+            return false;
+        if (getDatesVoyage() != null ? !getDatesVoyage().equals(voyage.getDatesVoyage()) : voyage.getDatesVoyage() != null)
+            return false;
+        if (getClient() != null ? !getClient().equals(voyage.getClient()) : voyage.getClient() != null) return false;
+        return getVoyageurs() != null ? getVoyageurs().equals(voyage.getVoyageurs()) : voyage.getVoyageurs() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + (getRegion() != null ? getRegion().hashCode() : 0);
+        result = 31 * result + (getDescriptif() != null ? getDescriptif().hashCode() : 0);
+        result = 31 * result + (getDatesVoyage() != null ? getDatesVoyage().hashCode() : 0);
+        result = 31 * result + (getClient() != null ? getClient().hashCode() : 0);
+        result = 31 * result + (getVoyageurs() != null ? getVoyageurs().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Voyage id=" + id + ", region=" + region + ", le=" + datesVoyage + ".";
     }
 }

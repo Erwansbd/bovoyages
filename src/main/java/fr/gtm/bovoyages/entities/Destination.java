@@ -22,10 +22,10 @@ public class Destination implements Serializable {
     @JoinColumn(name = "fk_destination")
     private List<DatesVoyage> datesVoyages = new ArrayList<DatesVoyage>();
 
-    public Destination(String region, String description, boolean raye) {
+    public Destination() {
     }
 
-    public Destination() {
+    public Destination(String region, String description, boolean raye) {
     }
 
     public long getId() {

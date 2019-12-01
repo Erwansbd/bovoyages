@@ -31,35 +31,43 @@ public class DestinationDTO implements Serializable {
     }
     
     public long getId() {
+
         return id;
     }
 
     public void setId(long id) {
+
         this.id = id;
     }
 
     public String getRegion() {
+
         return region;
     }
 
     public void setRegion(String region) {
+
         this.region = region;
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public void setDescription(String description) {
+
         this.description = description;
     }
 
 	public boolean isDeleted() {
-		return deleted;
+
+        return deleted;
 	}
 
 	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
+
+        this.deleted = deleted;
 	}
 
 
