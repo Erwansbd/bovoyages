@@ -74,6 +74,15 @@ public class Voyage implements Serializable {
 		this.client = client;
 		this.voyageurs = voyageurs;
 	}
+    
+    public Voyage(String region, String descriptif, boolean paye, DatesVoyage datesVoyage, Client client, List<Voyageur> voyageurs) {
+ 		this.region = region;
+ 		this.descriptif = descriptif;
+ 		this.paye = paye;
+ 		this.datesVoyage = datesVoyage;
+ 		this.client = client;
+ 		this.voyageurs = voyageurs;
+ 	}
 
 
 

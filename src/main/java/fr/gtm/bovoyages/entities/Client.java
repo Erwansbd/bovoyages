@@ -41,10 +41,50 @@ public class Client implements Serializable {
      * @param nom de type String.
      * @param email de type String.
      */
-    public Client(String nom, String email) {
-		super();
+    public Client(long id, String nom, String email) {
+    	this.id = id;
 		this.nom = nom;
 		this.email = email;
+	}
+    
+    public Client(long id, String nom) {
+    	this.id = id;
+		this.nom = nom;
+	}
+    
+    public Client(String nom, String email) {
+		this.nom = nom;
+		this.email = email;
+	}
+    
+    public Client(long id) {
+    	this.id = id;
+	}
+    
+    
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 
@@ -58,28 +98,6 @@ public class Client implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
-	public Client(String nom) {
-        this.nom = nom;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
 
 
@@ -118,6 +136,7 @@ public class Client implements Serializable {
 			return false;
 		return true;
 	}
+    
 
 
 

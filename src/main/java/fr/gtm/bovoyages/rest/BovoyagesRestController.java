@@ -166,7 +166,12 @@ public class BovoyagesRestController {
 		List<DestinationDTO> destinationsdto = new ArrayList<DestinationDTO>();
 		List<Destination> destinations = destinationRepository.getValidDestinations();
 		for (Destination d : destinations) {
+			for(DatesVoyage dv : d.getDatesVoyages()) {
+				if(!dv.isDeleted()) {
 			destinationsdto.add(new DestinationDTO(d));
+			break;
+				}
+			}
 		}
 		return destinationsdto;
 	}
