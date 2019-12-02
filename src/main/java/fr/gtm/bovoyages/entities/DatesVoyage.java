@@ -4,26 +4,64 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe DatesVoyage, serialisable.
+ */
 @Entity
 @Table(name = "dates_voyages")
 @Access(AccessType.FIELD)
 public class DatesVoyage implements Serializable {
 
+    /**
+     * Identifiant id de type long.
+     */
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_date_voyage")
     private long id;
+    /**
+     * Attribut dateAller de type Date.
+     */
     @Column(name = "date_depart")
     private Date dateAller;
+    /**
+     * Attribut dateRetour de type Date.
+     */
     @Column(name = "date_retour")
     private Date dateRetour;
+    /**
+     * Attribut prixHT de type float.
+     */
     private float prixHT;
+    /**
+     * Attribut nbrePlaces de type int.
+     */
     @Column(name = "nb_places")
     private int nbrePlaces;
+    /**
+     * Attribut deleted de type boolean.
+     */
     private boolean deleted;
+    /**
+     * Attribut promotion de type boolean.
+     */
     private boolean promotion;
 
+    /**
+     * Constructeur par défaaut de DatesVoyage
+     */
     public DatesVoyage() {}
     
+    /**
+     * Constructeur de DatesVoyage.
+     * @param id de type long.
+     * @param dateAller de type Date.
+     * @param dateRetour de type Date.
+     * @param prixHT de type float.
+     * @param deleted de type boolean.
+     * @param promotion de type boolean.
+     */
     public DatesVoyage(long id, Date dateAller, Date dateRetour, float prixHT, boolean deleted, boolean promotion) {
 		super();
 		this.id = id;

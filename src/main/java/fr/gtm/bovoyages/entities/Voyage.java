@@ -5,16 +5,36 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe Voyage, serialisable.
+ */
 @Entity
 @Table(name = "voyages")
 public class Voyage implements Serializable {
 
+    /**
+     * Identifiant id de type long.
+     */
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_voyage")
     private long id;
+    /**
+     * Attribut region de type String.
+     */
     private String region;
+    /**
+     * Attribut descriptif de type String.
+     */
     private String descriptif;
+    /**
+     * Attribut paye de type boolean.
+     */
     private boolean paye;
+    /**
+     * Attribut datesVoyage de type DatesVoyage.
+     */
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_dates_voyage")
     private DatesVoyage datesVoyage;
@@ -22,16 +42,30 @@ public class Voyage implements Serializable {
     @JoinColumn(name = "fk_client")
     private Client client;
 
+    /**
+     * Attribut voyageurs de type List<Voyageur>.
+     */
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "voyages_voyageurs",
                 joinColumns = @JoinColumn(name = "fk_voyage"),
                 inverseJoinColumns = @JoinColumn(name = "fk_voyageur"))
     private List<Voyageur> voyageurs = new ArrayList<Voyageur>();
     
+    /**
+     * Constructeur par défaut de Voyage.
+     */
     public Voyage() {}
     
     
 
+    /**
+     * @param region de type String.
+     * @param descriptif de type String.
+     * @param datesVoyage de type DatesVoyage.
+     * @param client de type Client.
+     * @param voyageurs de type List<Voyageur>.
+     * Constructeur de Voyage.
+     */
     public Voyage(String region, String descriptif, DatesVoyage datesVoyage, Client client, List<Voyageur> voyageurs) {
 		super();
 		this.region = region;

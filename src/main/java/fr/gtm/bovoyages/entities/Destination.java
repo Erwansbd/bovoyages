@@ -5,26 +5,74 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe Destination, serialisable. 
+ */
 @Entity
 @Table(name = "destinations")
 @Access(AccessType.FIELD)
 public class Destination implements Serializable {
 
+    /**
+     * Identifiant id de type long. 
+     */
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_destination")
     private long id;
+    /**
+     * Attribut region de type String.
+     */
     private String region;
+    /**
+     * Attribut description de type String.
+     */
     private String description;
+    /**
+     * Attribut raye de type boolean.
+     */
     @Column(name = "deleted")
     private boolean raye;
 
+    /**
+     * Attribut datesVoyages de type List<DatesVoyage>.
+     */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_destination")
     private List<DatesVoyage> datesVoyages = new ArrayList<DatesVoyage>();
 
+    /**
+     * @param region de type String.
+     * @param description de type String.
+     * @param raye de type boolean.
+     * Constructeur de Destination servant à DestinationDTO.
+     */
     public Destination(String region, String description, boolean raye) {
     }
     
+    
+    
+    /**
+     * @param region de type String.
+     * @param description de type String.
+     * @param raye de type boolean.
+     * @param datesVoyages de type DatesVoyage.
+     * Constructeur de Destination.
+     */
+    public Destination(String region, String description, boolean raye, List<DatesVoyage> datesVoyages) {
+		super();
+		this.region = region;
+		this.description = description;
+		this.raye = raye;
+		this.datesVoyages = datesVoyages;
+	}
+
+
+
+	/**
+     * Constructeur par défaut de Destination.
+     */
     public Destination() {}
 
     public long getId() {

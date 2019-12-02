@@ -3,21 +3,44 @@ package fr.gtm.bovoyages.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe Client, serialisable.
+ *
+ */
 @Entity
 @Table(name = "clients")
 public class Client implements Serializable {
 
+    /**
+     * Identifiant id de type long.
+     */
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_client")
     private long id;
+    /**
+     * Attribut nom de type String.
+     */
     private String nom;
+    /**
+     * Attribut email de type String.
+     */
     private String email;
 
+    /**
+     * Construcetur par défaut de Client.
+     */
     public Client() {
     }
     
     
 
+    /**
+     * Constructeur de Client.
+     * @param nom de type String.
+     * @param email de type String.
+     */
     public Client(String nom, String email) {
 		super();
 		this.nom = nom;

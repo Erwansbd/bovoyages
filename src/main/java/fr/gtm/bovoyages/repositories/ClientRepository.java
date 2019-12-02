@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.gtm.bovoyages.entities.Client;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Repository de l'entité Client.
+ */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 /*
@@ -18,17 +23,35 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	@Query(value = "Update clients c SET c.password=?1, c.digest=?2 WHERE c.id=?3", nativeQuery = true)
 	void updateDigest(String password, String digest, long id);*/
 
+	/**
+	 * @param nom de type String.
+	 * @return le mot de passe chiffré du client correspondant.
+	 */
 	@Query(value = "SELECT digest from clients WHERE clients = ?1", nativeQuery = true)
 	String getValues(String nom);
 
+	/**
+	 * @param nom de type String
+	 * @return un Client si il existe en BDD.
+	 */
 	public Optional<Client> findByNom(String nom);
 
+	/**
+	 * @param nom de type String.
+	 * @param password de type String.
+	 * Création d'un nouveau client.
+	 */
 	@Transactional
 	@Modifying
 	@Query(value = "INSERT INTO clients (nom, digest) VALUES(?1, SHA2(?2,256))", nativeQuery = true)
 	void createNewClient(String nom, String password);
 	
-	 @Query(value ="Select * From clients c WHERE c.nom = ?1 and c.digest =?2", nativeQuery = true)
+	 /**
+	 * @param nom de type String.
+	 * @param password de type String.
+	 * @return un Client si il existe en BDD.
+	 */
+	@Query(value ="Select * From clients c WHERE c.nom = ?1 and c.digest =?2", nativeQuery = true)
 	    Optional<Client> findByNomAndHashPassword(String nom, String password);
 
 }

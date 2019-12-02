@@ -6,18 +6,55 @@ import java.util.List;
 
 import org.springframework.web.context.annotation.SessionScope;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe Caddy serialisable.
+ */
 @SessionScope
 public class Caddy implements Serializable {
 	
+/**
+ * Attribut client de type Client.
+ */
 private Client client;	
+/**
+ * Attribut voyage de type Voyage.
+ */
 private Voyage voyage;
+/**
+ * Attribut prixHT de type double.
+ */
 private double prixHT;
+/**
+ * Attribut voyages de type List<Voyage>;
+ */
 private List<Voyage> voyages = new ArrayList<Voyage>();
 //private List<VoyageDTO> voyageDtos = new ArrayList<VoyageDTO>();
 
 
 
+/**
+ * Constructeur par défaut de Caddy.
+ */
 public Caddy() {}
+
+
+
+/**
+ * Constructeur de Caddy.
+ * @param client de type Client.
+ * @param prixHT de type double.
+ * @param voyages de type List<Voyages>;
+ */
+public Caddy(Client client, double prixHT, List<Voyage> voyages) {
+	super();
+	this.client = client;
+	this.prixHT = prixHT;
+	this.voyages = voyages;
+}
+
+
 
 public Voyage getVoyage() {
 	return voyage;
