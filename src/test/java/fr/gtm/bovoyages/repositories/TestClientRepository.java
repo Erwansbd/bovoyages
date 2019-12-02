@@ -44,12 +44,12 @@ class TestClientRepository {
 	@Test
 	public void testCreateNewClient(){
 
-	clientRepository.createNewClient("Alphonse45f", "dfghjjk");
-	Optional<Client> client = clientRepository.findByNom("Alphonse45f");
+	clientRepository.createNewClient("Alphonsefgfggf45fbvvc", "dfghjjk");
+	Optional<Client> client = clientRepository.findByNom("Alphonsefgfggf45fbvvc");
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Alphonse45f",client.get().getNom());
+	assertEquals("Alphonsefgfggf45fbvvc",client.get().getNom());
 	}
 
 	}
@@ -58,12 +58,12 @@ class TestClientRepository {
 	@Test
 	public void testFindByNomAndHashPassword(){
 
-	clientRepository.createNewClient("Alphonse4456", "abc");
-	Optional<Client> client = clientRepository.findByNomAndHashPassword("Alphonse4456", "abc");
+	clientRepository.createNewClient("Alphonse4456fdfvffdfdbvb", "abc");
+	Optional<Client> client = clientRepository.findByNomAndHashPassword("Alphonse4456fdfvffdfdbvb", "abc");
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Alphonse4456",client.get().getNom());
+	assertEquals("Alphonse4456fdfvffdfdbvb",client.get().getNom());
 	}
 
 	}

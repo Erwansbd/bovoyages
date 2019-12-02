@@ -211,10 +211,13 @@ public class BovoyagesRestController {
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 			
 			DatesVoyage dv = voyage.getDatesVoyage();
+			Client client = voyage.getClient();
+
 			if (dv.getNbrePlaces() == 0) {
 				dv.setDeleted(true);
 			}
 			datesVoyagesRepository.save(dv);
+			clientRepository.save(client);
 			voyageRepository.save(voyage);
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 //			voyageRepository.updateDatesVoyageByVoyageId(voyage.getId());

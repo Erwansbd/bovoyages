@@ -38,7 +38,7 @@ public class Voyage implements Serializable {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_dates_voyage")
     private DatesVoyage datesVoyage;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_client")
     private Client client;
 
