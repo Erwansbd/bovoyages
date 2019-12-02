@@ -49,6 +49,11 @@ public class Destination implements Serializable {
      * Constructeur de Destination servant à DestinationDTO.
      */
     public Destination(String region, String description, boolean raye) {
+    	this.region = region;
+		this.description = description;
+		this.raye = raye;
+    	
+    	
     }
     
     
@@ -61,7 +66,7 @@ public class Destination implements Serializable {
      * Constructeur de Destination.
      */
     public Destination(String region, String description, boolean raye, List<DatesVoyage> datesVoyages) {
-		super();
+
 		this.region = region;
 		this.description = description;
 		this.raye = raye;

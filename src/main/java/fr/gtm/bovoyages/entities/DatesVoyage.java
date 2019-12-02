@@ -71,6 +71,15 @@ public class DatesVoyage implements Serializable {
 		this.deleted = deleted;
 		this.promotion = promotion;
 	}
+    
+    public DatesVoyage(Date dateAller, Date dateRetour, float prixHT, boolean deleted, boolean promotion) {
+
+		this.dateAller = dateAller;
+		this.dateRetour = dateRetour;
+		this.prixHT = prixHT;
+		this.deleted = deleted;
+		this.promotion = promotion;
+	}
 
 	public long getId() {
         return id;

@@ -35,6 +35,8 @@ import javax.inject.Inject;
  *  @version 1.0 
  *  Controller de type REST de BoVoyages.
  */
+
+@CrossOrigin
 @RestController
 public class BovoyagesRestController {
 
