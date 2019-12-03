@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
  * @version 1.0
- * Classe Destination, serialisable. 
+ * Classe Destination, serialisable.
  */
 @Entity
 @Table(name = "destinations")
@@ -16,9 +16,10 @@ import java.util.List;
 public class Destination implements Serializable {
 
     /**
-     * Identifiant id de type long. 
+     * Identifiant id de type long.
      */
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_destination")
     private long id;
     /**
@@ -34,26 +35,23 @@ public class Destination implements Serializable {
      */
     @Column(name = "deleted")
     private boolean raye;
-    
-    
+
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_destination")
-	private List<Images> images = new ArrayList<>();
-	
-
-    
-    
-
-	public List<Images> getImages() {
-		return images;
-	}
+    private List<Images> images = new ArrayList<>();
 
 
-	public void setImages(List<Images> images) {
-		this.images = images;
-	}
+    public List<Images> getImages() {
+        return images;
+    }
 
-	/**
+
+    public void setImages(List<Images> images) {
+        this.images = images;
+    }
+
+    /**
      * Attribut datesVoyages de type List<DatesVoyage>.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -61,45 +59,38 @@ public class Destination implements Serializable {
     private List<DatesVoyage> datesVoyages = new ArrayList<DatesVoyage>();
 
     /**
-     * @param region de type String.
+     * @param region      de type String.
      * @param description de type String.
-     * @param raye de type boolean.
-     * Constructeur de Destination servant à DestinationDTO.
+     * @param raye        de type boolean.
+     *                    Constructeur de Destination servant à DestinationDTO.
      */
     public Destination(String region, String description, boolean raye) {
-    	this.region = region;
-		this.description = description;
-		this.raye = raye;
-    	
-    	
+        this.region = region;
+        this.description = description;
+        this.raye = raye;
     }
-    
-    
+
     /**
-     * @param region de type String.
-     * @param description de type String.
-     * @param raye de type boolean.
+     * @param region       de type String.
+     * @param description  de type String.
+     * @param raye         de type boolean.
      * @param datesVoyages de type DatesVoyage.
-     * Constructeur de Destination.
+     *                     Constructeur de Destination.
      */
     public Destination(String region, String description, boolean raye, List<DatesVoyage> datesVoyages) {
 
-		this.region = region;
-		this.description = description;
-		this.raye = raye;
-		this.datesVoyages = datesVoyages;
-	}
-    
-    
-    
-    
+        this.region = region;
+        this.description = description;
+        this.raye = raye;
+        this.datesVoyages = datesVoyages;
+    }
 
 
-
-	/**
+    /**
      * Constructeur par défaut de Destination.
      */
-    public Destination() {}
+    public Destination() {
+    }
 
     public long getId() {
         return id;
@@ -141,47 +132,44 @@ public class Destination implements Serializable {
         this.datesVoyages = datesVoyages;
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((datesVoyages == null) ? 0 : datesVoyages.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (raye ? 1231 : 1237);
-		result = prime * result + ((region == null) ? 0 : region.hashCode());
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((datesVoyages == null) ? 0 : datesVoyages.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + (int) (id ^ (id >>> 32));
+        result = prime * result + (raye ? 1231 : 1237);
+        result = prime * result + ((region == null) ? 0 : region.hashCode());
+        return result;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Destination other = (Destination) obj;
-		if (datesVoyages == null) {
-			if (other.datesVoyages != null)
-				return false;
-		} else if (!datesVoyages.equals(other.datesVoyages))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (id != other.id)
-			return false;
-		if (raye != other.raye)
-			return false;
-		if (region == null) {
-			if (other.region != null)
-				return false;
-		} else if (!region.equals(other.region))
-			return false;
-		return true;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Destination other = (Destination) obj;
+        if (datesVoyages == null) {
+            if (other.datesVoyages != null)
+                return false;
+        } else if (!datesVoyages.equals(other.datesVoyages))
+            return false;
+        if (description == null) {
+            if (other.description != null)
+                return false;
+        } else if (!description.equals(other.description))
+            return false;
+        if (id != other.id)
+            return false;
+        if (raye != other.raye)
+            return false;
+        if (region == null) {
+			return other.region == null;
+        } else return region.equals(other.region);
 	}
 
 
