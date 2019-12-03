@@ -210,14 +210,16 @@ public class BovoyagesRestController {
 			LOG.info(">>>>>" + voyage.getVoyageurs().size());
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 			
+			Optional<Client> clientEnBase = clientRepository.findByNom(voyage.getClient().getNom());
+			
 			DatesVoyage dv = voyage.getDatesVoyage();
-			Client client = voyage.getClient();
+			voyage.setClient(clientEnBase.get());
 
 			if (dv.getNbrePlaces() == 0) {
 				dv.setDeleted(true);
 			}
 			datesVoyagesRepository.save(dv);
-			clientRepository.save(client);
+
 			voyageRepository.save(voyage);
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
 //			voyageRepository.updateDatesVoyageByVoyageId(voyage.getId());
