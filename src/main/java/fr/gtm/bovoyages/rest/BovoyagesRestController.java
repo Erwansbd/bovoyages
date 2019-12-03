@@ -117,6 +117,26 @@ public class BovoyagesRestController {
 	}
 	
 	
+	@GetMapping("/voyageclient/{nom}")
+	public Voyage getVoyageParClientName(@PathVariable("nom") String nom) {
+		
+		
+		
+		Client client = clientRepository.findByNom(nom).get();
+		
+		
+		Voyage voyage = voyageRepository.findByClient(client);
+		
+		return voyage;
+		
+		
+		
+  }
+	
+	
+	
+	
+	
 	/*------front ---------------------------------------------------*/
 	
 	/**
