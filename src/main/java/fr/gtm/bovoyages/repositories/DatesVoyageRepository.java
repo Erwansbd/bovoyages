@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import fr.gtm.bovoyages.entities.DatesVoyage;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Repository de l'entite DatesVoyage.
+ */
 @Repository
-public interface DatesVoyageRepository extends JpaRepository<DatesVoyage, Long> {
+public interface DatesVoyageRepository  extends JpaRepository <DatesVoyage, Long> {
 
 }

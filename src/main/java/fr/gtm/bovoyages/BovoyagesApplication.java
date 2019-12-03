@@ -8,6 +8,12 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Classe Main servant à SpringBoot pour demarrer l'application.
+ *
+ */
 @SpringBootApplication
 @EnableAsync
 @Controller

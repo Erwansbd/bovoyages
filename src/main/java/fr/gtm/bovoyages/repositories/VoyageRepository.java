@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
+ * @version 1.0
+ * Repository de l'entité Voyage.
+ */
 @Repository
 public interface VoyageRepository extends JpaRepository<Voyage, Long> {
 	
