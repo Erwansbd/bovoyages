@@ -5,6 +5,7 @@ import fr.gtm.bovoyages.entities.Caddy;
 import fr.gtm.bovoyages.entities.Client;
 import fr.gtm.bovoyages.entities.DatesVoyage;
 import fr.gtm.bovoyages.entities.Destination;
+import fr.gtm.bovoyages.entities.Images;
 import fr.gtm.bovoyages.entities.Voyage;
 import fr.gtm.bovoyages.entities.Voyageur;
 import fr.gtm.bovoyages.repositories.ClientRepository;
@@ -152,6 +153,31 @@ public class BovoyagesRestController {
 		}
 		return destinationsFinal;
 	}
+	
+	
+	
+	
+	/**
+	 * @param region de type String
+	 * @return la liste de toutes les destinations correspondante à la recherche par region associee.
+	 */
+	@GetMapping("/destinationimage/{id}")
+	public List<Images> getImagesByDestinationId(@PathVariable(name="id") long id) {
+		List<Images> images = new ArrayList<>();
+		
+		Optional<Destination> destination = destinationRepository.findById(id);
+		if(destination.isPresent()) {
+		images = destination.get().getImages();
+		}
+		
+		return images;
+		
+	
+		
+
+	}
+
+	
 
 //    @PostMapping("/destination/new")
 //    public String createDestination(@RequestBody DestinationDTO destinationDTO) {

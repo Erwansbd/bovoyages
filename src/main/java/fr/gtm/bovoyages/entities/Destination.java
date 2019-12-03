@@ -34,8 +34,26 @@ public class Destination implements Serializable {
      */
     @Column(name = "deleted")
     private boolean raye;
+    
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_destination")
+	private List<Images> images = new ArrayList<>();
+	
 
-    /**
+    
+    
+
+	public List<Images> getImages() {
+		return images;
+	}
+
+
+	public void setImages(List<Images> images) {
+		this.images = images;
+	}
+
+	/**
      * Attribut datesVoyages de type List<DatesVoyage>.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -57,7 +75,6 @@ public class Destination implements Serializable {
     }
     
     
-    
     /**
      * @param region de type String.
      * @param description de type String.
@@ -72,6 +89,10 @@ public class Destination implements Serializable {
 		this.raye = raye;
 		this.datesVoyages = datesVoyages;
 	}
+    
+    
+    
+    
 
 
 
