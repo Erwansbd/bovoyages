@@ -429,13 +429,15 @@ public class BovoyagesRestController {
 	 * @param id de type String.
 	 * @return une confirmation de validation de panier.
 	 */
-	@GetMapping("/caddy/confirm/{id}")
-	public String ConfirmCaddy(@PathVariable("id") long id) {
+	@GetMapping("/caddy/confirm/{nom}")
+	public String ConfirmCaddy(@PathVariable("nom") String nom) {
+		Client client1 = clientRepository.findByNom(nom).get();
+		Long idClient = client1.getId();
 		List<Voyage> voyages = voyageRepository.findAll();
 		List<Voyage> voyagesDuClient = new ArrayList<>();
 		for(Voyage v : voyages) {
 			Client client = v.getClient();
-			if (client.getId()==id && !v.isPaye()) voyagesDuClient.add(v);
+			if (client.getId()==idClient && !v.isPaye()) voyagesDuClient.add(v);
 		}
 //		Optional<Client> clientMail = clientRepository.findById(id);
 		double prixTotal=0;
@@ -443,7 +445,8 @@ public class BovoyagesRestController {
 			prixTotal+= v.getDatesVoyage().getPrixHT()*v.getVoyageurs().size();
 		}
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(voyagesDuClient.get(0).getClient().getEmail());
+			//mailMessage.setTo(voyagesDuClient.get(0).getClient().getEmail());
+			mailMessage.setTo("e.soubeyrand@bovoyages.gouv.fr");
 			mailMessage.setFrom("service-achats@bovoyages.fr");
 			mailMessage.setSubject("Confirmation commande");
 			String message ="Cher "+voyagesDuClient.get(0).getClient().getNom()+","+"\n"+
