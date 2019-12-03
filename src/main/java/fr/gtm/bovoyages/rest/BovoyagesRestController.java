@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class BovoyagesRestController {
 
     @Autowired
@@ -30,8 +31,6 @@ public class BovoyagesRestController {
     ClientRepository clientRepository;
     @Autowired
     VoyageurRepository voyageurRepository;
-    @Autowired
-    JavaMailSender javaMailSender;
 
     @GetMapping("/destinationDTO/all")
     public List<DestinationDTO> getAllDestinationsDTO() {
@@ -87,6 +86,12 @@ public class BovoyagesRestController {
                 datesVoyages.add(d);
         }
         return datesVoyages;
+    }
+
+    @GetMapping("/date/{id}")
+    public DatesVoyage getDatesVoyageById(@PathVariable("id") long id) {
+        DatesVoyage datesVoyage = datesVoyageRepository.findById(id).get();
+        return datesVoyage;
     }
 
     @PostMapping("voyage/new")
@@ -207,40 +212,6 @@ public class BovoyagesRestController {
             }
         }
         return null;
-    }
-
-
-    @GetMapping("/caddy/confirm/{id}")
-    public String ConfirmCaddy(@PathVariable("id") long id) {
-        List<Voyage> voyages = voyageRepository.findAll();
-        List<Voyage> voyagesDuClient = new ArrayList<>();
-        for (Voyage v : voyages) {
-            Client client = v.getClient();
-            if (client.getId() == id && !v.isPaye()) voyagesDuClient.add(v);
-        }
-        double prixTotal = 0;
-        for (Voyage v : voyagesDuClient) {
-            prixTotal += v.getDatesVoyage().getPrixHT() * v.getVoyageurs().size();
-        }
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(voyagesDuClient.get(0).getClient().getEmail());
-        mailMessage.setFrom("service-achats@bovoyages.fr");
-        mailMessage.setSubject("Confirmation commande");
-        String message = "Cher " + voyagesDuClient.get(0).getClient().getNom() + "," + "\n" +
-                "Voici le recapitulatif de votre commande:";
-        for (Voyage v : voyagesDuClient) {
-            message += "\n" + v.toString();
-            message += "\n" + "Nombre de participant(s) : " + v.getVoyageurs().size() + " Montant : " + v.getDatesVoyage().getPrixHT() * v.getVoyageurs().size() + " euros.";
-        }
-        message += "\n" + "\n" + "Vous allez etre debite dans les prochains jours de " + prixTotal + " euros." + "\n" + "\n"
-                + "Nous vous remercions infiniment. " + "\n" + "A tres bientot sur notre site." + "\n" + "\n"
-                + "service-achat Bovoyages.";
-        mailMessage.setText(message);
-        mailMessage.setSentDate(new Date(System.currentTimeMillis()));
-        javaMailSender.send(mailMessage);
-        String messageConfirmation = "La commande a bien été confirmée. Vous allez etre débité dans les prochains jours de " + prixTotal + "€" + "." +
-                "Un mail de confirmation vous a été envoyé à l'adresse suivante : " + voyagesDuClient.get(0).getClient().getEmail() + ".";
-        return messageConfirmation;
     }
 
     @PostMapping("/voyage/voyageur")
