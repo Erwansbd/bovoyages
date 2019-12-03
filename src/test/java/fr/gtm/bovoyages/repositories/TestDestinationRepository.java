@@ -1,9 +1,10 @@
 package fr.gtm.bovoyages.repositories;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import fr.gtm.bovoyages.entities.DatesVoyage;
+import fr.gtm.bovoyages.entities.Destination;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,13 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import fr.gtm.bovoyages.entities.DatesVoyage;
-import fr.gtm.bovoyages.entities.Destination;
-import fr.gtm.bovoyages.repositories.DestinationRepository;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TestDestinationRepository {

@@ -1,15 +1,9 @@
 package fr.gtm.bovoyages.repositories;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -67,28 +61,4 @@ class TestClientRepository {
 	}
 
 	}
-
-
-
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -90,7 +90,6 @@ public class Voyage implements Serializable {
 
 
 	public Voyage(long id, String region, String descriptif, DatesVoyage datesVoyage, Client client) {
-		super();
 		this.id = id;
 		this.region = region;
 		this.descriptif = descriptif;

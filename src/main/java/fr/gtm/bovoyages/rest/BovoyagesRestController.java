@@ -1,7 +1,6 @@
 package fr.gtm.bovoyages.rest;
 
 import fr.gtm.bovoyages.dtos.DestinationDTO;
-import fr.gtm.bovoyages.entities.Caddy;
 import fr.gtm.bovoyages.entities.Client;
 import fr.gtm.bovoyages.entities.DatesVoyage;
 import fr.gtm.bovoyages.entities.Destination;
@@ -16,7 +15,6 @@ import fr.gtm.bovoyages.repositories.VoyageurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
@@ -28,7 +26,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.inject.Inject;
 
 /**
  *  @author Erwan Soubeyrand, Denis Kuçuk, Jonathan Dimur.
@@ -36,8 +33,9 @@ import javax.inject.Inject;
  *  Controller de type REST de BoVoyages.
  */
 
-@CrossOrigin
+
 @RestController
+@CrossOrigin
 public class BovoyagesRestController {
 
 	/**
@@ -70,11 +68,6 @@ public class BovoyagesRestController {
 	 */
 	@Autowired 
 	JavaMailSender javamailsender;
-	
-    //@Inject
-	//Caddy caddy;
-
-	// Digest digest;
 
 	/**
 	 * Attribut static final LOG de type Logger.
@@ -102,8 +95,6 @@ public class BovoyagesRestController {
 		List<Destination> destinationList = destinationRepository.findAll();
 		return destinationList;
 	}
-	
-	/*------front ---------------------------------------------------*/
 
 	/**
 	 * @param id de type long
@@ -115,10 +106,7 @@ public class BovoyagesRestController {
 		if(destination.isRaye()) return null;
 		return destination;
 	}
-	
-	
-	/*------front ---------------------------------------------------*/
-	
+
 	/**
 	 * @param region de type String
 	 * @return la liste de toutes les destinations correspondante à la recherche par region associee.
@@ -133,16 +121,6 @@ public class BovoyagesRestController {
 		return destinationsFinal;
 	}
 
-//    @PostMapping("/destination/new")
-//    public String createDestination(@RequestBody DestinationDTO destinationDTO) {
-//        destinationRepository.save(destinationDTO.toDestination(destinationDTO));
-//        return "Votre destination " +destinationDTO.getRegion()+ " avec comme description : " +destinationDTO.getDescription()+ " a bien été sauvegardé dans la base de données.";
-//    }
-	
-	
-	
-	/*------front ?????------------*/
-
 	/**
 	 * @param destination de type Destination
 	 * @return une confirmation de type String de la création d'une nouvelle destination.
@@ -154,9 +132,6 @@ public class BovoyagesRestController {
 		return "Votre destination " + destination.getRegion() + " avec comme description : "
 				+ destination.getDescription() + " a bien été sauvegardé dans la base de données.";
 	}
-	
-	
-	/*------front ---------------------------------------------------*/
 
 	/**
 	 * @return la liste de toutes les DestinationDTO valides (non rayees).
@@ -175,8 +150,6 @@ public class BovoyagesRestController {
 		}
 		return destinationsdto;
 	}
-	
-	/*------front ---------------------------------------------------*/
 
 	/**
 	 * @param id de type long.
@@ -193,8 +166,6 @@ public class BovoyagesRestController {
 		}
 		return datesVoyages;
 	}
-	
-	/*------front ---------------------------------------------------*/
 
 	/**
 	 * @param voyage de type Voyage.
@@ -222,11 +193,7 @@ public class BovoyagesRestController {
 
 			voyageRepository.save(voyage);
 			LOG.info(" >>>>" + voyage.getDatesVoyage().getNbrePlaces());
-//			voyageRepository.updateDatesVoyageByVoyageId(voyage.getId());
-		
-//			List<Voyage> panier = caddy.getVoyages();
-//			panier.add(voyage);
-//			caddy.setVoyages(panier);
+
 			return "Votre voyage " + voyage.getRegion() + "avec comme description " + voyage.getDescriptif()
 					+ " a bien été crée.";
 		} 
@@ -235,10 +202,6 @@ public class BovoyagesRestController {
 			return "Voyage non crée. Le nombre de voyageurs doit etre compris entre 1 et 9.";
 			}
 	}
-	
-	
-	
-	
 
 	/**
 	 * @param id de type long.
@@ -300,27 +263,6 @@ public class BovoyagesRestController {
 		return "Le voyage a bien été supprimé.";
 	}
 
-//	public void updateDV(DatesVoyage datesVoyage) {
-//	DatesVoyage dv = datesVoyagesRepository.findById(datesVoyage.getId()).get();
-//	dv.setDateAller(datesVoyage.getDateAller());
-//	dv.setDateRetour(datesVoyage.getDateRetour());
-//	dv.setDeleted(datesVoyage.isDeleted());
-//	dv.setNbrePlaces(datesVoyage.getNbrePlaces());
-//	datesVoyagesRepository.save(dv);
-
-	// datesVoyagesRepository.save(datesVoyage);
-
-//}
-
-//	@GetMapping("/signing")
-//	public String signing(Model model) {
-//		Client client = new Client();
-//		model.addAttribute("client", client);
-//		return "signing";
-//	}
-	
-	/*------front ---------------------------------------------------*/
-
 	/**
 	 * @param nom de type String.
 	 * @param password de type String.
@@ -349,8 +291,6 @@ public class BovoyagesRestController {
 		isAuth = false;
 		return isAuth;
 	}
-	
-	/*------front ---------------------------------------------------*/
 
 	/**
 	 * @param nom de type String.
@@ -372,9 +312,6 @@ public class BovoyagesRestController {
 		return isAuth;
 
 	}
-	
-	
-	/*------front ?????------------*/
 
 	/**
 	 * @param id de type long.
@@ -417,7 +354,6 @@ public class BovoyagesRestController {
 			Client client = v.getClient();
 			if (client.getId()==id && !v.isPaye()) voyagesDuClient.add(v);
 		}
-//		Optional<Client> clientMail = clientRepository.findById(id);
 		double prixTotal=0;
 		for(Voyage v : voyagesDuClient) {
 			prixTotal+= v.getDatesVoyage().getPrixHT()*v.getVoyageurs().size();
@@ -431,7 +367,6 @@ public class BovoyagesRestController {
 			for(Voyage v: voyagesDuClient) {
 				message+="\n"+v.toString();
 				message+="\n"+"Nombre de participant(s) : "+v.getVoyageurs().size() +" Montant : "+v.getDatesVoyage().getPrixHT()*v.getVoyageurs().size()+" euros.";
-//				v.setPaye(true);
 				}
 			message+="\n"+"\n"+"Vous allez etre debite dans les prochains jours de "+prixTotal+" euros."+"\n"+"\n"
 			+"Nous vous remercions infiniment. "+"\n"+"A tres bientot sur notre site."+"\n"+"\n"
@@ -453,6 +388,12 @@ public class BovoyagesRestController {
 		Voyageur voyageurMisAJour = new Voyageur(voyageur.getId(), voyageur.getCivilite(), voyageur.getNom(), voyageur.getPrenom(), voyageur.getDateNaissance());
 		voyageurRepository.save(voyageurMisAJour);
 		return "Voyageur : "+voyageur.getNom()+" "+voyageur.getPrenom() +" mis à jour.";
+	}
+
+	@GetMapping("/date/{id}")
+	public DatesVoyage getDatesVoyageById(@PathVariable("id") long id) {
+		DatesVoyage datesVoyage = datesVoyagesRepository.findById(id).get();
+		return datesVoyage;
 	}
 
 }
