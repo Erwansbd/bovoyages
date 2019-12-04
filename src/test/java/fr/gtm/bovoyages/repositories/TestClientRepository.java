@@ -29,12 +29,12 @@ class TestClientRepository {
 	@Test
 	public void testFindByNom(){
 
-	Optional<Client> client = clientRepository.findByNom("Jeremy");
+	Optional<Client> client = clientRepository.findByNom("AlphonseDansletas");
 	
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Jeremy",client.get().getNom());
+	assertEquals("AlphonseDansletas",client.get().getNom());
 	}
 
 	}
@@ -43,27 +43,33 @@ class TestClientRepository {
 	@Test
 	public void testCreateNewClient(){
 
-	clientRepository.createNewClient("Alphonsefgfggdsf45fbvvc", "dfghjjk");
-	Optional<Client> client = clientRepository.findByNom("Alphonsefgfggdsf45fbvvc");
+	clientRepository.createNewClient("user0", "dfghjjk");
+	Optional<Client> client = clientRepository.findByNom("user0");
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Alphonsefdfdgfggdsf45fbvvc",client.get().getNom());
+	assertEquals("user0",client.get().getNom());
 	}
+	
+	clientRepository.delete(client.get());
 
 	}
+	
 	
 	
 	@Test
 	public void testFindByNomAndHashPassword(){
 
-	clientRepository.createNewClient("Alphonse4456ffffdfvffdfdbvb", "abc");
-	Optional<Client> client = clientRepository.findByNomAndHashPassword("Alphonse4456ffffdfvffdfdbvb", "abc");
+	clientRepository.createNewClient("user1", "abc");
+	Optional<Client> client2 = clientRepository.findByNomAndHashPassword("user1", "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad");
 
-	if (client.isPresent()) {
-	assertNotNull(client);
-	assertEquals("Alphonse4456ffffdfvffdfdbvb",client.get().getNom());
+	if (client2.isPresent()) {
+	assertNotNull(client2);
+	assertEquals("user1",client2.get().getNom());
 	}
+	
+	clientRepository.delete(client2.get());
+	
 
 	}
 
