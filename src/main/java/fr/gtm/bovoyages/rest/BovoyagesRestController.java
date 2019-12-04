@@ -135,6 +135,29 @@ public class BovoyagesRestController {
   }
 	
 	
+	@GetMapping("/voyagesclient/{nom}")
+	public List<Voyage> getVoyageParClientName2(@PathVariable("nom") String nom) {
+		
+		
+		
+		Client client = clientRepository.findByNom(nom).get();
+		
+		
+		List<Voyage> voyages = voyageRepository.findAll();
+		
+		List<Voyage> voyagesTemp = new ArrayList<>();
+		
+		for(Voyage v : voyages )
+		{
+			if(v.getClient().getId() == client.getId())
+			voyagesTemp.add(v);
+		}
+		
+		return voyagesTemp;
+			
+  }
+	
+	
 	
 	
 	

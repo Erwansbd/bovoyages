@@ -3,6 +3,7 @@ package fr.gtm.bovoyages.repositories;
 import fr.gtm.bovoyages.entities.Client;
 import fr.gtm.bovoyages.entities.Voyage;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,6 +27,7 @@ public interface VoyageRepository extends JpaRepository<Voyage, Long> {
 	
 	
 	public Voyage findByClient(Client client);
+	
 	
 
 }

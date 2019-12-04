@@ -1,9 +1,8 @@
 package fr.gtm.bovoyages.repositories;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,12 +43,12 @@ class TestClientRepository {
 	@Test
 	public void testCreateNewClient(){
 
-	clientRepository.createNewClient("Alphonsefgfggf45fbvvc", "dfghjjk");
-	Optional<Client> client = clientRepository.findByNom("Alphonsefgfggf45fbvvc");
+	clientRepository.createNewClient("Alphonsefgfggdsf45fbvvc", "dfghjjk");
+	Optional<Client> client = clientRepository.findByNom("Alphonsefgfggdsf45fbvvc");
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Alphonsefgfggf45fbvvc",client.get().getNom());
+	assertEquals("Alphonsefdfdgfggdsf45fbvvc",client.get().getNom());
 	}
 
 	}
@@ -58,12 +57,12 @@ class TestClientRepository {
 	@Test
 	public void testFindByNomAndHashPassword(){
 
-	clientRepository.createNewClient("Alphonse4456fdfvffdfdbvb", "abc");
-	Optional<Client> client = clientRepository.findByNomAndHashPassword("Alphonse4456fdfvffdfdbvb", "abc");
+	clientRepository.createNewClient("Alphonse4456ffffdfvffdfdbvb", "abc");
+	Optional<Client> client = clientRepository.findByNomAndHashPassword("Alphonse4456ffffdfvffdfdbvb", "abc");
 
 	if (client.isPresent()) {
 	assertNotNull(client);
-	assertEquals("Alphonse4456fdfvffdfdbvb",client.get().getNom());
+	assertEquals("Alphonse4456ffffdfvffdfdbvb",client.get().getNom());
 	}
 
 	}
