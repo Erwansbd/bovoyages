@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light mb-3\">\n  <a class=\"navbar-brand\">{{title}}</a>\n\n  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->\n  <button class=\"navbar-toggler\" type=\"button\" (click)=\"isMenuCollapsed = !isMenuCollapsed\">\n    &#9776;\n  </button>\n\n  <!-- Step 2: Add the ngbCollapse directive to the element below. -->\n  <div [ngbCollapse]=\"isMenuCollapsed\" class=\"collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse\">\n    <ul class=\"navbar-nav flex-grow-2\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]='[\"/\"]'>Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]='[\"/destination\"]' (click)=\"isMenuCollapsed = true\">Destinations</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]='[\"/promotion\"]'>Promotions</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"!(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" routerLinkActive=\"active\" [routerLink]='[\"/login\"]'>Login</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"!(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" [routerLink]='[\"/register\"]'>Register</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" [routerLink]='[\"/mesvoyages\", userDisplay]'>Mes voyages</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\">{{userDisplay | uppercase}}</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"btn btn-primary text-white\" (click)=\"onLogout()\" *ngIf=\"loginStatus\">Logout</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"isMenuCollapsed = true\"></a>\n      </li>\n    </ul>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light mb-3\">\n  <a class=\"navbar-brand\">{{title}}</a>\n\n  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->\n  <button class=\"navbar-toggler\" type=\"button\" (click)=\"isMenuCollapsed = !isMenuCollapsed\">\n    &#9776;\n  </button>\n\n  <!-- Step 2: Add the ngbCollapse directive to the element below. -->\n  <div [ngbCollapse]=\"isMenuCollapsed\" class=\"collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse\">\n    <ul class=\"navbar-nav flex-grow-2\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]='[\"/destination\"]' (click)=\"isMenuCollapsed = true\">Destinations</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"!(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" routerLinkActive=\"active\" [routerLink]='[\"/login\"]'>Login</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"!(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" [routerLink]='[\"/register\"]'>Register</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\" [routerLink]='[\"/mesvoyages\", userDisplay]'>Mes voyages</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"nav-link\" *ngIf=\"loginStatus\">{{userDisplay | uppercase}}</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"(loginStatus$ | async) as loginStatus\">\n        <a class=\"btn btn-primary text-white\" (click)=\"onLogout()\" *ngIf=\"loginStatus\">Logout</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"isMenuCollapsed = true\"></a>\n      </li>\n    </ul>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -101,19 +101,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/bovoyages/pages/home/home.component.html":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/bovoyages/pages/home/home.component.html ***!
-  \************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>home works!</p>\n");
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/bovoyages/pages/login/login.component.html":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/bovoyages/pages/login/login.component.html ***!
@@ -123,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n  <div class=\"row no-gutter\">\n    <!-- The image half -->\n    <div class=\"col-md-6 d-none d-md-flex bg-image\"></div>\n\n    <!-- The content half -->\n    <div class=\"col-md-6 bg-light\">\n      <div class=\"login d-flex align-items-center py-5\">\n\n        <!-- Login content-->\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-lg-10 col-xl-7 mx-auto\">\n              <h3 class=\"display-4\">Login</h3>\n              <p class=\"text-muted mb-4\">Merci de vous connecter !</p>\n              <form #f=\"ngForm\" (ngSubmit)=\"login(f)\">\n                <div class=\"form-group mb-3\">\n                  <input type=\"text\" name=\"nom\" placeholder=\"Username\" #nom=\"ngModel\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4\" ngModel required minlength=\"3\">\n                  <div *ngIf=\"nom.invalid && (nom.touched || nom.dirty)\">\n                    <p *ngIf=\"nom.errors.required\" class=\"font-weight-bold text-center\">\n                      Merci de renseigner votre nom d'utilisateur.\n                    </p>\n                    <p *ngIf=\"nom.errors.minlength\" class=\"font-weight-bold text-center\">\n                      Votre nom doit contenir plus de trois caracteres.\n                    </p>\n                  </div>\n                </div>\n                <div class=\"form-group mb-3\">\n                  <input type=\"text\" placeholder=\"Password\" name=\"password\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4 text-primary\" required ngModel>\n                </div>\n                <div class=\"form-group\">\n                  <button type=\"submit\" class=\"btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm\">\n                    Sign in\n                  </button>\n                </div>\n                <p *ngIf=\"error\">\n                  {{error}}\n                </p>\n                <div class=\"text-center d-flex justify-content-between mt-4\"><p>Pas de compte? c'est par ici. <a\n                  [routerLink]='[\"/register\"]' class=\"font-italic text-muted\">\n                  <u>Register</u></a></p></div>\n              </form>\n            </div>\n          </div>\n        </div><!-- End -->\n\n      </div>\n    </div><!-- End -->\n\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n  <div class=\"row no-gutter\">\n    <!-- The image half -->\n    <div class=\"col-md-6 d-none d-md-flex bg-image\"></div>\n\n    <!-- The content half -->\n    <div class=\"col-md-6 bg-light\">\n      <div class=\"login d-flex align-items-center py-5\">\n\n        <!-- Login content-->\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-lg-10 col-xl-7 mx-auto\">\n              <h3 class=\"display-4\">Connexion</h3>\n              <p class=\"text-muted mb-4\">Merci de vous connecter !</p>\n              <form #f=\"ngForm\" (ngSubmit)=\"login(f)\">\n                <div class=\"form-group mb-3\">\n                  <input type=\"text\" name=\"nom\" placeholder=\"Username\" #nom=\"ngModel\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4\" ngModel required minlength=\"3\">\n                  <div *ngIf=\"nom.invalid && (nom.touched || nom.dirty)\">\n                    <p *ngIf=\"nom.errors.required\" class=\"font-weight-bold text-center\">\n                      Merci de renseigner votre nom d'utilisateur.\n                    </p>\n                    <p *ngIf=\"nom.errors.minlength\" class=\"font-weight-bold text-center\">\n                      Votre nom doit contenir plus de trois caracteres.\n                    </p>\n                  </div>\n                </div>\n                <div class=\"form-group mb-3\">\n                  <input type=\"password\" placeholder=\"Password\" name=\"password\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4 text-primary\" ngModel required>\n                  </div>\n                <div class=\"form-group\">\n                  <button type=\"submit\" class=\"btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm\">\n                    Sign in\n                  </button>\n                </div>\n                <p *ngIf=\"error\">\n                  {{error}}\n                </p>\n                <div class=\"text-center d-flex justify-content-between mt-4\"><p>Pas de compte? c'est par ici. <a\n                  [routerLink]='[\"/register\"]' class=\"font-italic text-muted\">\n                  <u>Register</u></a></p></div>\n                <div class=\"text-center d-flex justify-content-between\"><p>Vous voulez revenir à l'accueil? c'est par ici.\n                  <a\n                    [routerLink]='[\"/destination\"]' class=\"font-italic text-muted\">\n                    <u>Accueil</u></a></p></div>\n              </form>\n            </div>\n          </div>\n        </div><!-- End -->\n\n      </div>\n    </div><!-- End -->\n\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -149,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n  <div class=\"row no-gutter\">\n    <!-- The image half -->\n    <div class=\"col-md-6 d-none d-md-flex\"></div>\n    <!-- Login content-->\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-lg-10 col-xl-7 mx-auto\">\n          <h3 class=\"display-4\">Inscription</h3>\n          <p class=\"text-muted mb-4\">Merci de vous inscrire !</p>\n          <form #f=\"ngForm\" (ngSubmit)=\"register(f)\">\n            <div class=\"form-group mb-3\">\n              <input type=\"text\" name=\"nom\" placeholder=\"Username\" #nom=\"ngModel\"\n                     class=\"form-control rounded-pill border-0 shadow-sm px-4\" ngModel required minlength=\"3\">\n              <div *ngIf=\"nom.invalid && (nom.touched || nom.dirty)\">\n                <p *ngIf=\"nom.errors.required\" class=\"font-weight-bold text-center\">\n                  Merci de renseigner un nom d'utilisateur.\n                </p>\n                <p *ngIf=\"nom.errors.minlength\" class=\"font-weight-bold text-center\">\n                  Votre nom doit contenir plus de trois caracteres.\n                </p>\n              </div>\n            </div>\n            <div class=\"form-group mb-3\">\n              <input type=\"text\" placeholder=\"Password\" name=\"password\"\n                     class=\"form-control rounded-pill border-0 shadow-sm px-4 text-primary\" required ngModel>\n            </div>\n            <div class=\"form-group\">\n              <button type=\"submit\" class=\"btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm\">\n                Sign up\n              </button>\n            </div>\n            <div class=\"text-center d-flex justify-content-between mt-4\"><p>Deja utilisateur? c'est par ici. <a\n              [routerLink]='[\"/login\"]' class=\"font-italic text-muted\">\n              <u>Login</u></a></p></div>\n          </form>\n        </div>\n      </div>\n    </div><!-- End -->\n    <!-- The content half -->\n    <div class=\"col-md-6 d-none d-md-flex bg-image\">\n\n    </div><!-- End -->\n\n  </div>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n  <div class=\"row no-gutter\">\n    <div class=\"col-md-6 bg-light\">\n      <div class=\"login d-flex align-items-center py-5\">\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-lg-10 col-xl-7 mx-auto\">\n              <h3 class=\"display-4\">Inscription</h3>\n              <p class=\"text-muted mb-4\">Merci de vous inscrire !</p>\n              <form #f=\"ngForm\" (ngSubmit)=\"register(f)\">\n                <div class=\"form-group mb-3\">\n                  <input type=\"text\" name=\"nom\" placeholder=\"Username\" #nom=\"ngModel\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4\" ngModel required minlength=\"5\">\n                  <div *ngIf=\"nom.invalid && (nom.touched || nom.dirty)\">\n                    <p *ngIf=\"nom.errors.required\" class=\"font-weight-bold text-center\">\n                      Votre nom d'utilisateur ne peut pas être vide.\n                    </p>\n                    <p *ngIf=\"nom.errors.minlength\" class=\"font-weight-bold text-center\">\n                      Votre nom d'utilisateur doit contenir au minimum cinq lettres.\n                    </p>\n                  </div>\n                </div>\n                <div class=\"form-group mb-3\">\n                  <input type=\"password\" placeholder=\"Password\" name=\"password\" #password=\"ngModel\"\n                         class=\"form-control rounded-pill border-0 shadow-sm px-4 text-primary\" required ngModel pattern=\"(?=.*\\d)(?=.*[a-z]).{8,}\">\n                  <div *ngIf=\"password.invalid && (password.touched || password.dirty)\">\n                    <p *ngIf=\"password.errors.pattern\" class=\"font-weight-bold text-center\">\n                      Votre password doit contenir au minimum huit caracteres et un chiffre.\n                    </p>\n                  </div>\n                </div>\n                <div class=\"form-group\">\n                  <button type=\"submit\" class=\"btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm\">\n                    Sign up\n                  </button>\n                </div>\n                <p *ngIf=\"error\">\n                  {{error}}\n                </p>\n                <div class=\"text-center d-flex justify-content-between mt-4\"><p>Vous avez déja un compte? c'est par ici.\n                  <a\n                    [routerLink]='[\"/login\"]' class=\"font-italic text-muted\">\n                    <u>Login</u></a></p></div>\n                <div class=\"text-center d-flex justify-content-between\"><p>Vous voulez revenir à l'accueil? c'est par ici.\n                  <a\n                    [routerLink]='[\"/destination\"]' class=\"font-italic text-muted\">\n                    <u>Accueil</u></a></p></div>\n              </form>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-6 d-none d-md-flex bg-image\"></div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -412,12 +399,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _bovoyages_components_destination_details_destination_details_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bovoyages/components/destination-details/destination-details.component */ "./src/app/bovoyages/components/destination-details/destination-details.component.ts");
 /* harmony import */ var _bovoyages_pages_login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./bovoyages/pages/login/login.component */ "./src/app/bovoyages/pages/login/login.component.ts");
-/* harmony import */ var _bovoyages_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./bovoyages/pages/home/home.component */ "./src/app/bovoyages/pages/home/home.component.ts");
-/* harmony import */ var _bovoyages_pages_voyage_voyage_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./bovoyages/pages/voyage/voyage.component */ "./src/app/bovoyages/pages/voyage/voyage.component.ts");
-/* harmony import */ var _bovoyages_pages_register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./bovoyages/pages/register/register.component */ "./src/app/bovoyages/pages/register/register.component.ts");
-/* harmony import */ var _bovoyages_pages_mesvoyages_mesvoyages_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bovoyages/pages/mesvoyages/mesvoyages.component */ "./src/app/bovoyages/pages/mesvoyages/mesvoyages.component.ts");
-/* harmony import */ var _bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./bovoyages/services/auth-guard.service */ "./src/app/bovoyages/services/auth-guard.service.ts");
-
+/* harmony import */ var _bovoyages_pages_voyage_voyage_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./bovoyages/pages/voyage/voyage.component */ "./src/app/bovoyages/pages/voyage/voyage.component.ts");
+/* harmony import */ var _bovoyages_pages_register_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./bovoyages/pages/register/register.component */ "./src/app/bovoyages/pages/register/register.component.ts");
+/* harmony import */ var _bovoyages_pages_mesvoyages_mesvoyages_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./bovoyages/pages/mesvoyages/mesvoyages.component */ "./src/app/bovoyages/pages/mesvoyages/mesvoyages.component.ts");
+/* harmony import */ var _bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bovoyages/services/auth-guard.service */ "./src/app/bovoyages/services/auth-guard.service.ts");
 
 
 
@@ -431,25 +416,22 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'home', component: _bovoyages_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]
-    },
-    {
         path: 'destination', component: _bovoyages_pages_destination_liste_destination_liste_component__WEBPACK_IMPORTED_MODULE_3__["DestinationListeComponent"]
     },
     {
         path: 'destination-details/:id', component: _bovoyages_components_destination_details_destination_details_component__WEBPACK_IMPORTED_MODULE_5__["DestinationDetailsComponent"]
     },
     {
-        path: 'voyage/:id', component: _bovoyages_pages_voyage_voyage_component__WEBPACK_IMPORTED_MODULE_8__["VoyageComponent"], canActivate: [_bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__["AuthGuardService"]]
+        path: 'voyage/:id', component: _bovoyages_pages_voyage_voyage_component__WEBPACK_IMPORTED_MODULE_7__["VoyageComponent"], canActivate: [_bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_10__["AuthGuardService"]]
     },
     {
         path: 'login', component: _bovoyages_pages_login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"]
     },
     {
-        path: 'register', component: _bovoyages_pages_register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"]
+        path: 'register', component: _bovoyages_pages_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"]
     },
     {
-        path: 'mesvoyages/:nom', component: _bovoyages_pages_mesvoyages_mesvoyages_component__WEBPACK_IMPORTED_MODULE_10__["MesvoyagesComponent"], canActivate: [_bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__["AuthGuardService"]]
+        path: 'mesvoyages/:nom', component: _bovoyages_pages_mesvoyages_mesvoyages_component__WEBPACK_IMPORTED_MODULE_9__["MesvoyagesComponent"], canActivate: [_bovoyages_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_10__["AuthGuardService"]]
     },
     {
         path: '**', redirectTo: 'destination'
@@ -537,8 +519,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 /* harmony import */ var _bovoyages_services_client_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bovoyages/services/client.service */ "./src/app/bovoyages/services/client.service.ts");
-/* harmony import */ var _bovoyages_pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./bovoyages/pages/home/home.component */ "./src/app/bovoyages/pages/home/home.component.ts");
-
 
 
 
@@ -555,8 +535,7 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-            _bovoyages_pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__["BrowserModule"],
@@ -958,50 +937,6 @@ DestinationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/bovoyages/pages/home/home.component.css":
-/*!*********************************************************!*\
-  !*** ./src/app/bovoyages/pages/home/home.component.css ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Jvdm95YWdlcy9wYWdlcy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/bovoyages/pages/home/home.component.ts":
-/*!********************************************************!*\
-  !*** ./src/app/bovoyages/pages/home/home.component.ts ***!
-  \********************************************************/
-/*! exports provided: HomeComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let HomeComponent = class HomeComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-home',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/bovoyages/pages/home/home.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home.component.css */ "./src/app/bovoyages/pages/home/home.component.css")).default]
-    })
-], HomeComponent);
-
-
-
-/***/ }),
-
 /***/ "./src/app/bovoyages/pages/login/login.component.css":
 /*!***********************************************************!*\
   !*** ./src/app/bovoyages/pages/login/login.component.css ***!
@@ -1142,7 +1077,7 @@ MesvoyagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/*\n*\n* ==========================================\n* CUSTOM UTIL CLASSES\n* ==========================================\n*\n*/\n.login,\n.image {\n  min-height: 100vh;\n}\n.bg-image {\n  background-image: url('https://i.imgur.com/whA78A9.jpg');\n  background-size: cover;\n  background-position: center center;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYm92b3lhZ2VzL3BhZ2VzL3JlZ2lzdGVyL3JlZ2lzdGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztDQU1DO0FBQ0Q7O0VBRUUsaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSx3REFBd0Q7RUFDeEQsc0JBQXNCO0VBQ3RCLGtDQUFrQztBQUNwQyIsImZpbGUiOiJzcmMvYXBwL2Jvdm95YWdlcy9wYWdlcy9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLypcbipcbiogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4qIENVU1RPTSBVVElMIENMQVNTRVNcbiogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4qXG4qL1xuLmxvZ2luLFxuLmltYWdlIHtcbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbi5iZy1pbWFnZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnaHR0cHM6Ly9pLmltZ3VyLmNvbS93aEE3OEE5LmpwZycpO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXIgY2VudGVyO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("/*\n*\n* ==========================================\n* CUSTOM UTIL CLASSES\n* ==========================================\n*\n*/\n.login,\n.image {\n  min-height: 100vh;\n}\n.bg-image {\n  background-image: url('https://i.imgur.com/lPtZcSG.jpg');\n  background-size: cover;\n  background-position: center center;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYm92b3lhZ2VzL3BhZ2VzL3JlZ2lzdGVyL3JlZ2lzdGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztDQU1DO0FBQ0Q7O0VBRUUsaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSx3REFBd0Q7RUFDeEQsc0JBQXNCO0VBQ3RCLGtDQUFrQztBQUNwQyIsImZpbGUiOiJzcmMvYXBwL2Jvdm95YWdlcy9wYWdlcy9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLypcbipcbiogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4qIENVU1RPTSBVVElMIENMQVNTRVNcbiogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4qXG4qL1xuLmxvZ2luLFxuLmltYWdlIHtcbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbi5iZy1pbWFnZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnaHR0cHM6Ly9pLmltZ3VyLmNvbS9sUHRaY1NHLmpwZycpO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXIgY2VudGVyO1xufVxuIl19 */");
 
 /***/ }),
 
