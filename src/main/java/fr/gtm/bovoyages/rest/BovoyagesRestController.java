@@ -275,7 +275,7 @@ public class BovoyagesRestController {
      * @param nom      de type String.
      * @param password de type String.
      * @return is Auth de type boolean.
-     * @throws NoSuchAlgorithmException.
+     * @throws NoSuchAlgorithmException
      */
     @PostMapping("/connexion")
     public boolean connexionTo(@RequestParam(name = "nom") String nom, @RequestParam(name = "password") String password)
